@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/southside-seller-landing/index.html" }
+  ]
+}

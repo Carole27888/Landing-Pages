@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>What's Your Home Worth? | The Southside Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1E2A38;
+    --bone:#F6F3EC;
+    --bone-2:#EFEADF;
+    --brass:#A47C48;
+    --brass-dark:#8A6638;
+    --sage:#7C8B7A;
+    --ink:#23262B;
+    --line:#DAD3C3;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-padding-top:env(safe-area-inset-top,0px);}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    background:var(--bone);
+    color:var(--ink);
+    line-height:1.5;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  .top-bar{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px 6vw;
+    border-bottom:1px solid var(--line);
+  }
+  .brand{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:1.25rem;
+    color:var(--navy);
+    letter-spacing:0.01em;
+  }
+  .brand span{color:var(--brass-dark);}
+  .top-phone{
+    font-size:0.85rem;
+    color:var(--sage);
+  }
+  .top-phone a{color:var(--navy);text-decoration:none;font-weight:600;}
+
+  .hero{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:48px;
+    max-width:1180px;
+    margin:0 auto;
+    padding:64px 6vw 80px;
+    align-items:start;
+  }
+  @media (max-width:880px){
+    .hero{grid-template-columns:1fr;padding:40px 6vw 56px;gap:40px;}
+  }
+
+  .hero-copy h1{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:clamp(2.1rem,4.3vw,3.4rem);
+    line-height:1.06;
+    color:var(--navy);
+    max-width:11ch;
+  }
+  .hero-copy p.lede{
+    margin-top:22px;
+    font-size:1.08rem;
+    color:#4B4F4A;
+    max-width:38ch;
+  }
+
+  .trust-row{
+    display:flex;
+    gap:28px;
+    margin-top:40px;
+    flex-wrap:wrap;
+  }
+  .trust-item{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+  }
+  .trust-item .num{
+    font-family:'Fraunces',serif;
+    font-size:1.6rem;
+    color:var(--brass-dark);
+    font-weight:500;
+  }
+  .trust-item .label{
+    font-size:0.82rem;
+    color:var(--sage);
+  }
+
+  .process{
+    margin-top:52px;
+    border-top:1px solid var(--line);
+    padding-top:28px;
+  }
+  .process-title{
+    font-size:0.8rem;
+    color:var(--sage);
+    margin-bottom:16px;
+  }
+  .process-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 28px;
+  }
+  .process-row div{
+    font-size:0.95rem;
+    color:var(--ink);
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+  }
+  .process-row div::before{
+    content:'';
+    width:6px;height:6px;
+    border-radius:50%;
+    background:var(--brass);
+    display:inline-block;
+  }
+
+  /* Form panel */
+  .form-panel{
+    background:#fff;
+    border:1px solid var(--line);
+    padding:36px 32px;
+    position:relative;
+  }
+  .form-panel::before{
+    content:'';
+    position:absolute;
+    top:0;left:0;right:0;
+    height:4px;
+    background:var(--brass);
+  }
+  .form-panel h2{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:1.4rem;
+    color:var(--navy);
+  }
+  .form-panel .sub{
+    font-size:0.88rem;
+    color:var(--sage);
+    margin-top:6px;
+    margin-bottom:26px;
+  }
+  .field{
+    margin-bottom:16px;
+  }
+  .field label{
+    display:block;
+    font-size:0.78rem;
+    color:#5B5F58;
+    margin-bottom:6px;
+    font-weight:600;
+  }
+  .field input, .field select{
+    width:100%;
+    padding:12px 13px;
+    border:1px solid var(--line);
+    background:var(--bone);
+    font-family:'Inter',sans-serif;
+    font-size:0.95rem;
+    color:var(--ink);
+  }
+  .field input:focus, .field select:focus{
+    outline:2px solid var(--brass);
+    outline-offset:1px;
+    background:#fff;
+  }
+  .row2{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+  }
+  .submit-btn{
+    width:100%;
+    padding:14px;
+    background:var(--navy);
+    color:#fff;
+    border:none;
+    font-family:'Inter',sans-serif;
+    font-size:0.98rem;
+    font-weight:600;
+    cursor:pointer;
+    margin-top:6px;
+    transition:background .15s ease;
+  }
+  .submit-btn:hover{background:#141D28;}
+  .submit-btn:disabled{opacity:.7;cursor:wait;}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;}
+  .form-error{font-size:0.85rem;color:#A23B2A;margin-top:12px;}
+  [hidden]{display:none!important;}
+  .form-fine{
+    font-size:0.74rem;
+    color:#8A8E86;
+    margin-top:12px;
+    line-height:1.5;
+  }
+
+  .result{
+    display:none;
+    text-align:center;
+    padding:20px 4px 4px;
+  }
+  .result.show{display:block;}
+  .result p{color:#4B4F4A;font-size:0.92rem;}
+
+  footer{
+    text-align:center;
+    padding:28px 6vw 40px;
+    font-size:0.78rem;
+    color:var(--sage);
+  }
+</style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <div class="brand">The Southside <span>Group</span></div>
+    <div class="top-phone">Questions? <a href="tel:+16025551234">(602) 555-1234</a></div>
+  </div>
+
+  <main class="hero">
+    <div class="hero-copy">
+      <h1>Find out what your home is worth today.</h1>
+      <p class="lede">A free, no-obligation estimate from a local agent who knows your neighborhood, not just the wider market average.</p>
+
+      <div class="trust-row">
+        <div class="trust-item">
+          <span class="num">340+</span>
+          <span class="label">Homes sold across the Southwest</span>
+        </div>
+        <div class="trust-item">
+          <span class="num">16</span>
+          <span class="label">Avg. days on market</span>
+        </div>
+        <div class="trust-item">
+          <span class="num">98%</span>
+          <span class="label">Of asking price</span>
+        </div>
+      </div>
+
+      <div class="process">
+        <div class="process-title">HOW IT WORKS</div>
+        <div class="process-row">
+          <div>Share your address</div>
+          <div>We review recent sales in your neighborhood</div>
+          <div>Get your estimate within 24 hours</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-panel" id="formPanel">
+      <h2>Get your free estimate</h2>
+      <p class="sub">No obligation. We'll never share your info.</p>
+
+      <form id="leadForm">
+        <div class="field">
+          <label for="address">Home address</label>
+          <input type="text" id="address" name="property" placeholder="e.g. 1234 E Camelback Rd, Phoenix, AZ" required>
+        </div>
+        <div class="row2">
+          <div class="field">
+            <label for="name">Full name</label>
+            <input type="text" id="name" name="name" placeholder="Jane Doe" required>
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" placeholder="(602) 555-0123" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="jane@email.com" required>
+        </div>
+        <div class="field">
+          <label for="timeframe">When are you thinking of selling?</label>
+          <select id="timeframe" name="timeframe">
+            <option>Within 3 months</option>
+            <option>3–6 months</option>
+            <option>6–12 months</option>
+            <option>Just curious</option>
+          </select>
+        </div>
+        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp">
+        <button type="submit" class="submit-btn">Get My Free Estimate</button>
+        <p class="form-error" id="formError" role="alert" hidden>Sorry, something went wrong. Please try again or call us at (602) 555-1234.</p>
+        <p class="form-fine">By submitting, you agree to be contacted by a Southside Group agent about your property. Msg &amp; data rates may apply.</p>
+      </form>
+
+      <div class="result" id="result">
+        <p>A Southside Group agent will be in touch within 24 hours with an estimate based on recent sales in your neighborhood.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>The Southside Group &middot; Licensed Real Estate Brokerage &middot; Equal Housing Opportunity</footer>
+
+<script>
+  // Leads are emailed via Web3Forms (https://web3forms.com).
+  // The access key is public by design; it maps to the inbox set up in Web3Forms.
+  var WEB3FORMS_KEY = '90ea6a2c-f04c-4644-b049-814459406703';
+
+  var form = document.getElementById('leadForm');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var btn = form.querySelector('.submit-btn');
+    var err = document.getElementById('formError');
+    err.hidden = true;
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    var data = new FormData(form);
+    if (data.get('botcheck')) return;
+    data.delete('botcheck');
+    data.append('access_key', WEB3FORMS_KEY);
+    data.append('subject', 'New seller lead: ' + data.get('property'));
+    data.append('from_name', document.title);
+
+    // Plain FormData body (no JSON content-type) avoids a CORS preflight, which Web3Forms rejects.
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {'Accept': 'application/json'},
+      body: data
+    })
+    .then(function(r){ return r.json().then(function(j){ if(!r.ok || !j.success) throw j; }); })
+    .then(function(){
+      form.style.display = 'none';
+      document.querySelector('.form-panel .sub').style.display = 'none';
+      document.querySelector('.form-panel h2').textContent = "Thanks — you're all set.";
+      document.getElementById('result').classList.add('show');
+    })
+    .catch(function(){
+      err.hidden = false;
+      btn.disabled = false;
+      btn.textContent = 'Get My Free Estimate';
+    });
+  });
+</script>
+
+</body>
+</html>
